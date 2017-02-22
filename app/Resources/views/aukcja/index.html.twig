@@ -1,0 +1,31 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h2 class="page-header"> Spis aukcji </h2>
+    <table class="table table-striped"> 
+    <thead> 
+    <tr> 
+    <th>#</th> 
+    <th>Tytuł</th>
+    <th>Opis</th>
+    <th>Cena</th>
+    <th>Koniec aukcji</th>
+    <th>Zdjecia</th>
+    </tr>
+    </thead>
+    <tbody> 
+    {% for Aukcje in aukcja %}
+    <tr> 
+    <th scope="row">{{ aukcje.id }}</th>
+    <td>{{ aukcje.tytul }}</td>
+    <td>{{ aukcje.opis }}</td>
+    <td>{{ aukcje.cena }}</td>
+    <td>{{ aukcje.koniec| date ('f j, Y, g:i a') }}</td>
+    <td>{{ aukcje.zdjecie }}</td>
+    <td> 
+    <a href="/start/edit/{{aukcje.id}}", class="btn btn-default"> Edycja </a>
+    <a href="/start/delete/{{aukcje.id}}", class="btn btn-danger"> Usuń </a>
+    </tr> 
+    {% endfor %}
+    </tbody>
+    </table>
+{% endblock %}
